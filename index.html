@@ -22,7 +22,7 @@ $("#container").click(function(){
 function parseData(place){
 	var pResult = Papa.parse(place,{
 					download: true,
-					headers: true
+					header: true
 				  });
 	console.log(pResult);
 }
