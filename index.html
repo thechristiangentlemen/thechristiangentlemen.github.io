@@ -19,8 +19,8 @@ $("#container").click(function(){
     $.ajax({url: "league_663_rosters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
+		parseData(rosterCSV);
     }});
-	parseData(rosterCSV);
 });
 function parseData(rosterCSV){
 	var pResult = Papa.parse(rosterCSV);
