@@ -20,9 +20,9 @@ $("#container").click(function(){
         rosterCSV = result;
 		console.log(rosterCSV);
 		var leagueRosters = parseData(rosterCSV);
-		console.log(leagueRosters[276].data.Name);
-		console.log(leagueRosters[276].data.Team);
-		console.log(leagueRosters[276].data.Salary);
+		console.log(leagueRosters.data[276].Name);
+		console.log(leagueRosters.data[276].Team);
+		console.log(leagueRosters.data[276].Salary);
 		
     }});
 });
