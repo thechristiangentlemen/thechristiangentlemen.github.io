@@ -19,11 +19,8 @@ $("#container").click(function(){
     $.ajax({url: "league_663_rosters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
-		var leagueRosters = parseData(rosterCSV);
-		console.log(leagueRosters.data[276].Name);
-		console.log(leagueRosters.data[276].Team);
-		console.log(leagueRosters.data[276].Salary);
-		
+		parseData(rosterCSV);
+				
     }});
 });
 function parseData(rosterCSV){
@@ -31,6 +28,9 @@ function parseData(rosterCSV){
 					header: true
 				  });
 	console.log(pResult);
+	console.log(pResult.data[276].Name);
+	console.log(pResult.data[276].Team);
+	console.log(pResult.data[276].Salary);
 }
 </script>
 </body>
