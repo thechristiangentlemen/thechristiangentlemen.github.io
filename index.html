@@ -16,11 +16,14 @@
 <script>
 var rosterCSV = "";
 $("#container").click(function(){
-    url = "league_663_rosters.csv";
-	parseData(url);
+    $.ajax({url: "league_663_rosters.csv", success: function(result){
+        rosterCSV = result;
+		console.log(rosterCSV);
+		parseData(rosterCSV);
+    }});
 });
-function parseData(place){
-	var pResult = Papa.parse(place,{
+function parseData(url){
+	var pResult = Papa.parse(url,{
 					download: true,
 					header: true
 				  });
