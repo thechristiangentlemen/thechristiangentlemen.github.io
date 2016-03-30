@@ -22,9 +22,8 @@ $("#container").click(function(){
 		parseData(rosterCSV);
     }});
 });
-function parseData(url){
-	var pResult = Papa.parse(url,{
-					download: true,
+function parseData(rosterCSV){
+	var pResult = Papa.parse(rosterCSV,{
 					header: true
 				  });
 	console.log(pResult);
