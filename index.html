@@ -21,6 +21,10 @@ $("#container").click(function(){
 		console.log(rosterCSV);
     }});
 });
+function parseData(rosterCSV){
+	var pResult = Papa.parse(rosterCSV);
+	console.log(pResult);
+}
 </script>
 </body>
 </html>
