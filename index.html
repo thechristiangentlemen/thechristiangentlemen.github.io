@@ -31,14 +31,14 @@ function parseData(rosterCSV){
 				  });
 	var playerName = document.getElementById("playerName").value
 	console.log(playerName);
-	var player = function(playerName){
+	
 		for (i=0;i<pResult.data.length;i++){
 			if (pResult.data[i].Name === playerName){
-				return pResult.data[i];
+				var player = pResult.data[i];
 			};
 		};
-	};
-	player(playerName);
+	
+	console.log(player);
 	$("#container").append("<p>" + player.Name + " " + player.Team + " " + player.Salary + "</p>");
 	
 }
