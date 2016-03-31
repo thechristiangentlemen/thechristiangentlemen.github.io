@@ -31,6 +31,9 @@ function parseData(rosterCSV){
 	console.log(pResult.data[276].Name);
 	console.log(pResult.data[276].Team);
 	console.log(pResult.data[276].Salary);
+	for (i=0;i<pResult.data.length;i++){
+		$('#container').append("<p>" + pResult.data[276].Name + " " + pResult.data[276].Team + " " + pResult.data[276].Salary + "</p>");
+	}
 }
 </script>
 </body>
