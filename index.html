@@ -33,10 +33,11 @@ function parseData(rosterCSV){
 	var player = function(playerName){
 		for (i=0;i<pResult.data.length;i++){
 			if (pResult.data[i].Name === playerName){
-				$("#container").append("<p>" + pResult.data[i].Name + " " + pResult.data[i].Team + " " + pResult.data[i].Salary + "</p>");
+				return pResult.data[i];
 			};
 		};
 	};
+	$("#container").append("<p>" + player.Name + " " + player.Team + " " + player.Salary + "</p>");
 	
 }
 </script>
