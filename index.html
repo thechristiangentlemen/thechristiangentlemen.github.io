@@ -30,6 +30,7 @@ function parseData(rosterCSV){
 					header: true
 				  });
 	var playerName = document.getElementById("playerName").value
+	console.log(playerName);
 	var player = function(playerName){
 		for (i=0;i<pResult.data.length;i++){
 			if (pResult.data[i].Name === playerName){
