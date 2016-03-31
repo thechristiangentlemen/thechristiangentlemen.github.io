@@ -11,11 +11,13 @@
 </head>
 <body>
 	<div id="container">
-		CLICK ME!
+		<input type="text" id="playerName" placeholder="Player Name"><br>
+		<input type="button" id="search" value="Search">
+		
 	</div>
 <script>
 var rosterCSV = "";
-$("#container").click(function(){
+$("#search").click(function(){
     $.ajax({url: "league_663_rosters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
@@ -27,13 +29,15 @@ function parseData(rosterCSV){
 	var pResult = Papa.parse(rosterCSV,{
 					header: true
 				  });
-	console.log(pResult);
-	console.log(pResult.data[276].Name);
-	console.log(pResult.data[276].Team);
-	console.log(pResult.data[276].Salary);
-	for (i=0;i<pResult.data.length;i++){
-		$('#container').append("<p>" + pResult.data[i].Name + " " + pResult.data[i].Team + " " + pResult.data[i].Salary + "</p>");
+	var playerName = document.getElementById("playerName").value
+	var player = function(playerName){
+		for (i=0;i<pResult.data.length;i++){
+			if (pResult.data[i].Name === playerName){
+				$("#container").append("<p>" + pResult.data[i].Name + " " + pResult.data[i].Team + " " + pResult.data[i].Salary + "</p>");
+			};
+		};
 	};
+	
 }
 </script>
 </body>
