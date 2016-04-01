@@ -13,6 +13,7 @@
 	<div id="container">
 		<input type="text" id="playerName" placeholder="Player Name"></input><br>
 		<input type="button" id="search" value="Search"></input>
+		<p id="playerInfo"></p>
 		
 	</div>
 <script>
@@ -39,7 +40,7 @@ function parseData(rosterCSV){
 		};
 	
 	console.log(player);
-	$("#container").append("<p>" + player.Name + ", " + player.Team + ", " + player.Salary + "</p>");
+	$("#playerInfo").text(player.Name + ", " + player.Team + ", " + player.Salary);
 	
 }
 </script>
