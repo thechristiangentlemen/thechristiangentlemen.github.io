@@ -19,7 +19,7 @@
 <script>
 var rosterCSV = "";
 $("#search").click(function(){
-    $.ajax({url: "league_663_rosters.csv", success: function(result){
+    $.ajax({url: "DCBatters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
 		parseData(rosterCSV);
@@ -40,7 +40,7 @@ function parseData(rosterCSV){
 		};
 	
 	console.log(player);
-	$("#playerInfo").text(player.Name + ", " + player.Team + ", " + player.Salary);
+	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.2B + ", 3B:" + player.3B + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
 	
 }
 </script>
