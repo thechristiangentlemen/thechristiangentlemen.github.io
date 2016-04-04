@@ -57,6 +57,16 @@ var sbctx;
 var csctx;
 
 $("#search").click(function(){
+	
+    $.ajax({url: "DCBatters.csv", success: function(result){
+        rosterCSV = result;
+		console.log(rosterCSV);
+		parseData(rosterCSV);
+				
+    }});
+});
+
+$("clear").click(function(){
 	hrctx.clear();
 	pactx.clear();
 	hctx.clear();
@@ -66,14 +76,8 @@ $("#search").click(function(){
 	bbctx.clear();
 	sbctx.clear();
 	csctx.clear();
-	
-    $.ajax({url: "DCBatters.csv", success: function(result){
-        rosterCSV = result;
-		console.log(rosterCSV);
-		parseData(rosterCSV);
-				
-    }});
-});
+	$("playerName").text("");
+}
 function parseData(rosterCSV){
 	var pResult = Papa.parse(rosterCSV,{
 					header: true
