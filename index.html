@@ -15,7 +15,33 @@
 		<input type="text" id="playerName" placeholder="Player Name"></input><br>
 		<input type="button" id="search" value="Search"></input>
 		<p id="playerInfo"></p>
-		<canvas id="myChart" width="1200" height="400"></canvas>
+		
+		<p>PA</p>
+		<canvas id="paChart" width="1200" height="400"></canvas>
+		
+		<p>H</p>
+		<canvas id="hChart" width="1200" height="400"></canvas>
+		
+		<p>DBL</p>
+		<canvas id="dblChart" width="1200" height="400"></canvas>
+		
+		<p>TPL</p>
+		<canvas id="tplChart" width="1200" height="400"></canvas>
+		
+		<p>HR</p>
+		<canvas id="hrChart" width="1200" height="400"></canvas>
+		
+		<p>SO</p>
+		<canvas id="soChart" width="1200" height="400"></canvas>
+		
+		<p>BB</p>
+		<canvas id="bbChart" width="1200" height="400"></canvas>
+		
+		<p>SB</p>
+		<canvas id="sbChart" width="1200" height="400"></canvas>
+		
+		<p>CS</p>
+		<canvas id="csChart" width="1200" height="400"></canvas>
 		
 	</div>
 <script>
@@ -43,7 +69,7 @@ function parseData(rosterCSV){
 	
 	console.log(player);
 	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
-	
+	//HR
 	var hrArray = [];
 	var hrRate = player.HR/26;
 	var hrHolder = 0;
@@ -54,7 +80,7 @@ function parseData(rosterCSV){
 		week = j / 7;
 		day.push("Week:"+ week.toString());
 	};
-	var data = {
+	var hrData = {
 		labels: day,
 		datasets: [{
 			label: "My First dataset",
@@ -70,8 +96,224 @@ function parseData(rosterCSV){
 	var options = {
 		bezierCurve: false
 	};
-	var ctx = $("#myChart").get(0).getContext("2d");
-	var myNewChart = new Chart(ctx).Line(data, options);
+	var hrctx = $("#hrChart").get(0).getContext("2d");
+	var hrChart = new Chart(hrctx).Line(hrData, options);
+	//PA
+	var paArray = [];
+	var paRate = player.PA/26;
+	var paHolder = 0;
+	var paDay = [];
+	for (k=0; k<=182; k+=7){
+		paHolder = paHolder + paRate;
+		paArray.push(Math.floor(paHolder));
+		week = k / 7;
+		paDay.push("Week:"+ week.toString());
+	};
+	var paData = {
+		labels: day,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: paArray
+		}]
+	};
+	
+	var pactx = $("#paChart").get(0).getContext("2d");
+	var paChart = new Chart(pactx).Line(paData, options);
+	//H
+	var hArray = [];
+	var hRate = player.H/26;
+	var hHolder = 0;
+	var hDay = [];
+	for (l=0; l<=182; l+=7){
+		hHolder = hHolder + hRate;
+		hArray.push(Math.floor(hHolder));
+		week = l / 7;
+		hDay.push("Week:"+ week.toString());
+	};
+	var hData = {
+		labels: hDay,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: hArray
+		}]
+	};
+
+	var hctx = $("#hChart").get(0).getContext("2d");
+	var hChart = new Chart(hctx).Line(hData, options);
+	//DBL
+	var dblArray = [];
+	var dblRate = player.DBL/26;
+	var dblHolder = 0;
+	var dblDay = [];
+	for (m=0; m<=182; m+=7){
+		dblHolder = dblHolder + dblRate;
+		dblArray.push(Math.floor(dblHolder));
+		week = m / 7;
+		dblDay.push("Week:"+ week.toString());
+	};
+	var dblData = {
+		labels: dblDay,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: dblArray
+		}]
+	};
+	
+	var dblctx = $("#dblChart").get(0).getContext("2d");
+	var dblChart = new Chart(dblctx).Line(dblData, options);
+	//TPL
+	var tplArray = [];
+	var tplRate = player.TPL/26;
+	var tplHolder = 0;
+	var tplDay = [];
+	for (n=0; n<=182; n+=7){
+		tplHolder = tplHolder + tplRate;
+		tplArray.push(Math.floor(tplHolder));
+		week = n / 7;
+		tplDay.push("Week:"+ week.toString());
+	};
+	var tplData = {
+		labels: tplDay,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: tplArray
+		}]
+	};
+
+	var tplctx = $("#tplChart").get(0).getContext("2d");
+	var tplChart = new Chart(tplctx).Line(tplData, options);
+	//SO
+	var soArray = [];
+	var soRate = player.SO/26;
+	var soHolder = 0;
+	var soDay = [];
+	for (o=0; o<=182; o+=7){
+		soHolder = soHolder + soRate;
+		soArray.push(Math.floor(soHolder));
+		week = o / 7;
+		soDay.push("Week:"+ week.toString());
+	};
+	var soData = {
+		labels: soDay,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: soArray
+		}]
+	};
+
+	var soctx = $("#soChart").get(0).getContext("2d");
+	var soChart = new Chart(soctx).Line(soData, options);
+	//BB
+	var bbArray = [];
+	var bbRate = player.BB/26;
+	var bbHolder = 0;
+	var bbDay = [];
+	for (p=0; p<=182; p+=7){
+		bbHolder = bbHolder + bbRate;
+		bbArray.push(Math.floor(bbHolder));
+		week = p / 7;
+		bbDay.push("Week:"+ week.toString());
+	};
+	var bbData = {
+		labels: bbDay,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: bbArray
+		}]
+	};
+
+	var bbctx = $("#bbChart").get(0).getContext("2d");
+	var bbChart = new Chart(bbctx).Line(bbData, options);
+	//SB
+	var sbArray = [];
+	var sbRate = player.SB/26;
+	var sbHolder = 0;
+	var sbDay = [];
+	for (q=0; q<=182; q+=7){
+		sbHolder = sbHolder + sbRate;
+		sbArray.push(Math.floor(sbHolder));
+		week = q / 7;
+		sbDay.push("Week:"+ week.toString());
+	};
+	var sbData = {
+		labels: sbDay,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: sbArray
+		}]
+	};
+
+	var sbctx = $("#sbChart").get(0).getContext("2d");
+	var sbChart = new Chart(sbctx).Line(sbData, options);
+	//CS
+	var csArray = [];
+	var csRate = player.CS/26;
+	var csHolder = 0;
+	var csDay = [];
+	for (r=0; r<=182; r+=7){
+		csHolder = csHolder + csRate;
+		csArray.push(Math.floor(csHolder));
+		week = r / 7;
+		csDay.push("Week:"+ week.toString());
+	};
+	var csData = {
+		labels: csDay,
+		datasets: [{
+			label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: csArray
+		}]
+	};
+
+	var csctx = $("#csChart").get(0).getContext("2d");
+	var csChart = new Chart(csctx).Line(csData, options);
 }
 </script>
 </body>
