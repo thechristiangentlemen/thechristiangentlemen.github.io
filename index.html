@@ -13,7 +13,7 @@
 <body>
 	<div id="container">
 		<input type="text" id="playerName" placeholder="Player Name"></input><br>
-		<input type="button" id="search" value="Search"></input><input type="button" id="clear" value="Clear"></input>
+		<input type="button" id="search" value="Search"></input><input type="button" id="clear" value="Clear" onclick="clearPage()"></input>
 		<p id="playerInfo"></p>
 		
 		<p>PA</p>
@@ -76,9 +76,18 @@ $("#search").click(function(){
     }});
 });
 
-$("clear").click(function(){
-	window.location.reload();
-});
+function clearPage(){
+	hrChart.destroy();
+	paChart.destroy();
+	hChart.destroy();
+	dblChart.destroy();
+	tplChart.destroy();
+	soChart.destroy();
+	bbChart.destroy();
+	sbChart.destroy();
+	csChart.destroy();
+	document.getElementById("playerName").value = "";
+}
 
 function parseData(rosterCSV){
 	var pResult = Papa.parse(rosterCSV,{
