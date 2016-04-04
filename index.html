@@ -77,16 +77,7 @@ $("#search").click(function(){
 });
 
 $("clear").click(function(){
-	hrChart.destroy();
-	paChart.destroy();
-	hChart.destroy();
-	dblChart.destroy();
-	tplChart.destroy();
-	soChart.destroy();
-	bbChart.destroy();
-	sbChart.destroy();
-	csChart.destroy();
-	$("playerName").html("");
+	window.location.reload();
 });
 
 function parseData(rosterCSV){
