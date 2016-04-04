@@ -48,10 +48,10 @@ function parseData(rosterCSV){
 	var hrRate = player.HR/26;
 	var hrHolder = 0;
 	var day = [];
-	for (j=0; j<183; j+=6){
+	for (j=0; j<=182; j+=7){
 		hrHolder = hrHolder + hrRate;
 		hrArray.push(Math.floor(hrHolder));
-		day.push(j);
+		day.push("Week:"+ j.toString());
 	};
 	var data = {
 		labels: day,
