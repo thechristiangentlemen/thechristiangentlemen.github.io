@@ -50,8 +50,8 @@ function parseData(rosterCSV){
 	var day = [];
 	for (j=0; j<183; j+=6){
 		hrHolder = hrHolder + hrRate;
-		hrArray.push(Math.round(hrHolder));
-		day.push(" ");
+		hrArray.push(Math.floor(hrHolder));
+		day.push(j);
 	};
 	var data = {
 		labels: day,
