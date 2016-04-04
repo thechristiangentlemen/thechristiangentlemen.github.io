@@ -49,9 +49,9 @@ function parseData(rosterCSV){
 	var hrHolder = 0;
 	var day = [];
 	for (j=0; j<183; j++){
-		hrHolder = hrHolder + hrRate;
+		hrHolder = Math.floor(hrHolder + hrRate);
 		hrArray.push(hrHolder);
-		day.push(j);
+		day.push(" ");
 	};
 	var data = {
 		labels: day,
