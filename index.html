@@ -51,7 +51,8 @@ function parseData(rosterCSV){
 	for (j=0; j<=182; j+=7){
 		hrHolder = hrHolder + hrRate;
 		hrArray.push(Math.floor(hrHolder));
-		day.push("Week:"+ j.toString());
+		week = j / 7;
+		day.push("Week:"+ week.toString());
 	};
 	var data = {
 		labels: day,
