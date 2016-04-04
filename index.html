@@ -56,6 +56,16 @@ var bbctx;
 var sbctx;
 var csctx;
 
+var hrChart;
+var paChart;
+var hChart;
+var dblChart;
+var tplChart;
+var soChart;
+var bbChart;
+var sbChart;
+var csChart;
+
 $("#search").click(function(){
 	
     $.ajax({url: "DCBatters.csv", success: function(result){
@@ -67,16 +77,16 @@ $("#search").click(function(){
 });
 
 $("clear").click(function(){
-	hrctx.clear();
-	pactx.clear();
-	hctx.clear();
-	dblctx.clear();
-	tplctx.clear();
-	soctx.clear();
-	bbctx.clear();
-	sbctx.clear();
-	csctx.clear();
-	$("playerName").text("");
+	hrChart.clear();
+	paChart.clear();
+	hChart.clear();
+	dblChart.clear();
+	tplChart.clear();
+	soChart.clear();
+	bbChart.clear();
+	sbChart.clear();
+	csChart.clear();
+	$("playerName").html("");
 });
 function parseData(rosterCSV){
 	var pResult = Papa.parse(rosterCSV,{
@@ -121,7 +131,7 @@ function parseData(rosterCSV){
 		bezierCurve: false
 	};
 	hrctx = $("#hrChart").get(0).getContext("2d");
-	var hrChart = new Chart(hrctx).Line(hrData, options);
+	hrChart = new Chart(hrctx).Line(hrData, options);
 	//PA
 	var paArray = [];
 	var paRate = player.PA/26;
@@ -148,7 +158,7 @@ function parseData(rosterCSV){
 	};
 	
 	pactx = $("#paChart").get(0).getContext("2d");
-	var paChart = new Chart(pactx).Line(paData, options);
+	paChart = new Chart(pactx).Line(paData, options);
 	//H
 	var hArray = [];
 	var hRate = player.H/26;
@@ -175,7 +185,7 @@ function parseData(rosterCSV){
 	};
 
 	hctx = $("#hChart").get(0).getContext("2d");
-	var hChart = new Chart(hctx).Line(hData, options);
+	hChart = new Chart(hctx).Line(hData, options);
 	//DBL
 	var dblArray = [];
 	var dblRate = player.DBL/26;
@@ -202,7 +212,7 @@ function parseData(rosterCSV){
 	};
 	
 	dblctx = $("#dblChart").get(0).getContext("2d");
-	var dblChart = new Chart(dblctx).Line(dblData, options);
+	dblChart = new Chart(dblctx).Line(dblData, options);
 	//TPL
 	var tplArray = [];
 	var tplRate = player.TPL/26;
@@ -229,7 +239,7 @@ function parseData(rosterCSV){
 	};
 
 	tplctx = $("#tplChart").get(0).getContext("2d");
-	var tplChart = new Chart(tplctx).Line(tplData, options);
+	tplChart = new Chart(tplctx).Line(tplData, options);
 	//SO
 	var soArray = [];
 	var soRate = player.SO/26;
@@ -256,7 +266,7 @@ function parseData(rosterCSV){
 	};
 
 	soctx = $("#soChart").get(0).getContext("2d");
-	var soChart = new Chart(soctx).Line(soData, options);
+	soChart = new Chart(soctx).Line(soData, options);
 	//BB
 	var bbArray = [];
 	var bbRate = player.BB/26;
@@ -283,7 +293,7 @@ function parseData(rosterCSV){
 	};
 
 	bbctx = $("#bbChart").get(0).getContext("2d");
-	var bbChart = new Chart(bbctx).Line(bbData, options);
+	bbChart = new Chart(bbctx).Line(bbData, options);
 	//SB
 	var sbArray = [];
 	var sbRate = player.SB/26;
@@ -310,7 +320,7 @@ function parseData(rosterCSV){
 	};
 
 	sbctx = $("#sbChart").get(0).getContext("2d");
-	var sbChart = new Chart(sbctx).Line(sbData, options);
+	sbChart = new Chart(sbctx).Line(sbData, options);
 	//CS
 	var csArray = [];
 	var csRate = player.CS/26;
@@ -337,7 +347,7 @@ function parseData(rosterCSV){
 	};
 
 	csctx = $("#csChart").get(0).getContext("2d");
-	var csChart = new Chart(csctx).Line(csData, options);
+	csChart = new Chart(csctx).Line(csData, options);
 }
 </script>
 </body>
