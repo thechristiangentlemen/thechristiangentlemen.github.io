@@ -45,10 +45,10 @@ function parseData(rosterCSV){
 	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
 	
 	var hrArray = [];
-	var hrRate = player.HR/183;
+	var hrRate = player.HR/26;
 	var hrHolder = 0;
 	var day = [];
-	for (j=0; j<183; j++){
+	for (j=0; j<183; j+=6){
 		hrHolder = hrHolder + hrRate;
 		hrArray.push(Math.round(hrHolder));
 		day.push(" ");
