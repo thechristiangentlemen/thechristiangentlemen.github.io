@@ -74,7 +74,7 @@ function parseData(rosterCSV){
 	var hrRate = player.HR/26;
 	var hrHolder = 0;
 	var day = [];
-	for (j=0; j<=182; j+=7){
+	for (j=0; j<182; j+=7){
 		hrHolder = hrHolder + hrRate;
 		hrArray.push(Math.floor(hrHolder));
 		week = j / 7;
@@ -84,7 +84,7 @@ function parseData(rosterCSV){
 		labels: day,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -103,7 +103,7 @@ function parseData(rosterCSV){
 	var paRate = player.PA/26;
 	var paHolder = 0;
 	var paDay = [];
-	for (k=0; k<=182; k+=7){
+	for (k=0; k<182; k+=7){
 		paHolder = paHolder + paRate;
 		paArray.push(Math.floor(paHolder));
 		week = k / 7;
@@ -113,7 +113,7 @@ function parseData(rosterCSV){
 		labels: day,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -130,7 +130,7 @@ function parseData(rosterCSV){
 	var hRate = player.H/26;
 	var hHolder = 0;
 	var hDay = [];
-	for (l=0; l<=182; l+=7){
+	for (l=0; l<182; l+=7){
 		hHolder = hHolder + hRate;
 		hArray.push(Math.floor(hHolder));
 		week = l / 7;
@@ -140,7 +140,7 @@ function parseData(rosterCSV){
 		labels: hDay,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -157,7 +157,7 @@ function parseData(rosterCSV){
 	var dblRate = player.DBL/26;
 	var dblHolder = 0;
 	var dblDay = [];
-	for (m=0; m<=182; m+=7){
+	for (m=0; m<182; m+=7){
 		dblHolder = dblHolder + dblRate;
 		dblArray.push(Math.floor(dblHolder));
 		week = m / 7;
@@ -167,7 +167,7 @@ function parseData(rosterCSV){
 		labels: dblDay,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -184,7 +184,7 @@ function parseData(rosterCSV){
 	var tplRate = player.TPL/26;
 	var tplHolder = 0;
 	var tplDay = [];
-	for (n=0; n<=182; n+=7){
+	for (n=0; n<182; n+=7){
 		tplHolder = tplHolder + tplRate;
 		tplArray.push(Math.floor(tplHolder));
 		week = n / 7;
@@ -194,7 +194,7 @@ function parseData(rosterCSV){
 		labels: tplDay,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -211,7 +211,7 @@ function parseData(rosterCSV){
 	var soRate = player.SO/26;
 	var soHolder = 0;
 	var soDay = [];
-	for (o=0; o<=182; o+=7){
+	for (o=0; o<182; o+=7){
 		soHolder = soHolder + soRate;
 		soArray.push(Math.floor(soHolder));
 		week = o / 7;
@@ -221,7 +221,7 @@ function parseData(rosterCSV){
 		labels: soDay,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -238,7 +238,7 @@ function parseData(rosterCSV){
 	var bbRate = player.BB/26;
 	var bbHolder = 0;
 	var bbDay = [];
-	for (p=0; p<=182; p+=7){
+	for (p=0; p<182; p+=7){
 		bbHolder = bbHolder + bbRate;
 		bbArray.push(Math.floor(bbHolder));
 		week = p / 7;
@@ -248,7 +248,7 @@ function parseData(rosterCSV){
 		labels: bbDay,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -265,7 +265,7 @@ function parseData(rosterCSV){
 	var sbRate = player.SB/26;
 	var sbHolder = 0;
 	var sbDay = [];
-	for (q=0; q<=182; q+=7){
+	for (q=0; q<182; q+=7){
 		sbHolder = sbHolder + sbRate;
 		sbArray.push(Math.floor(sbHolder));
 		week = q / 7;
@@ -275,7 +275,7 @@ function parseData(rosterCSV){
 		labels: sbDay,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
@@ -292,7 +292,7 @@ function parseData(rosterCSV){
 	var csRate = player.CS/26;
 	var csHolder = 0;
 	var csDay = [];
-	for (r=0; r<=182; r+=7){
+	for (r=0; r<182; r+=7){
 		csHolder = csHolder + csRate;
 		csArray.push(Math.floor(csHolder));
 		week = r / 7;
@@ -302,7 +302,7 @@ function parseData(rosterCSV){
 		labels: csDay,
 		datasets: [{
 			label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
