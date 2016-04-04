@@ -77,17 +77,18 @@ $("#search").click(function(){
 });
 
 $("clear").click(function(){
-	hrChart.clear();
-	paChart.clear();
-	hChart.clear();
-	dblChart.clear();
-	tplChart.clear();
-	soChart.clear();
-	bbChart.clear();
-	sbChart.clear();
-	csChart.clear();
+	hrChart.destroy();
+	paChart.destroy();
+	hChart.destroy();
+	dblChart.destroy();
+	tplChart.destroy();
+	soChart.destroy();
+	bbChart.destroy();
+	sbChart.destroy();
+	csChart.destroy();
 	$("playerName").html("");
 });
+
 function parseData(rosterCSV){
 	var pResult = Papa.parse(rosterCSV,{
 					header: true
