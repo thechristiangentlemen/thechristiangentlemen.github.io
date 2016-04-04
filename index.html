@@ -25,7 +25,6 @@ $("#search").click(function(){
         rosterCSV = result;
 		console.log(rosterCSV);
 		parseData(rosterCSV);
-		makeChart(rosterCSV);
 				
     }});
 });
@@ -45,11 +44,17 @@ function parseData(rosterCSV){
 	console.log(player);
 	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
 	
-}
-
-function makeChart(rosterCSV){
+	var hrArray = [];
+	var hrRate = player.HR/183;
+	var hrHolder = 0;
+	var day = [];
+	for (j=0; j<183; j++){
+		hrHolder = hrHolder + hrRate;
+		hrArray.push(hrHolder);
+		day.push(j);
+	};
 	var data = {
-		labels: ["January", "February", "March", "April", "May", "June", "July"],
+		labels: day,
 		datasets: [{
 			label: "My First dataset",
             fillColor: "rgba(220,220,220,0.2)",
@@ -58,17 +63,8 @@ function makeChart(rosterCSV){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-		},{
-			label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
-		}]
+            data: hrArray
+		}
 	};
 	var options = {
 		bezierCurve: false
