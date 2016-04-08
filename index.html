@@ -80,7 +80,7 @@ $("#search").click(function(){
         rosterCSV = result;
 		console.log(rosterCSV);
 		
-		pResult = Papa.parse(csv,{
+		pResult = Papa.parse(rosterCSV,{
 					header: true
 				  });
 		var playerNameP = document.getElementById("playerName").value
