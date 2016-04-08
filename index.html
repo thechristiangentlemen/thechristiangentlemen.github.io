@@ -92,8 +92,8 @@ $("#search").click(function(){
 			};
 		};
 	
-	console.log(proj)
-	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
+	
+	$("#playerInfo").text(proj.Name + ", " + proj.Team + ", PA:" + proj.PA + ", H:" + proj.H + ", 2B:" + proj.DBL + ", 3B:" + proj.TPL + ", HR:" + proj.HR + ", SO:" + proj.SO + ", BB:" + proj.BB + ", SB:" + proj.SB + ", CS:" + proj.CS);
 				
     }});
 	
@@ -101,7 +101,19 @@ $("#search").click(function(){
         statsCSV = result;
 		console.log(statsCSV);
 		stats = parseData(statsCSV);
-				
+		
+		pResult = Papa.parse(statsCSV,{
+					header: true
+				  });
+		var playerNameS = document.getElementById("playerName").value
+		console.log(playerNameS);
+	
+		for (i=0;i<pResult.data.length;i++){
+			if (pResult.data[i].Name === playerNameS){
+				stats = pResult.data[i];
+			};
+		};
+
     }});
 	console.log(proj);
 	console.log(stats);
