@@ -374,6 +374,7 @@ function clearPage(){
 }
 
 function parseData(csv){
+	var player;
 	var pResult = Papa.parse(csv,{
 					header: true
 				  });
@@ -382,7 +383,7 @@ function parseData(csv){
 	
 		for (i=0;i<pResult.data.length;i++){
 			if (pResult.data[i].Name === playerName){
-				var player = pResult.data[i];
+				player = pResult.data[i];
 			};
 		};
 	
