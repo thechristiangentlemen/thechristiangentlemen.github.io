@@ -123,8 +123,8 @@ $("#search").click(function(){
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
             data: hrArrayProj
-		}],
-		[{
+		},
+		{
 			label: "My First dataset",
             fillColor: "#dddddd",
             strokeColor: "#022840",
@@ -387,6 +387,7 @@ function parseData(csv){
 	
 	console.log(player);
 	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
+	
 	return player;
 }
 </script>
