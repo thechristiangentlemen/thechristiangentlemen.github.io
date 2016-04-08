@@ -79,7 +79,21 @@ $("#search").click(function(){
     $.ajax({url: "DCBatters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
-		proj = parseData(rosterCSV);
+		
+		pResult = Papa.parse(csv,{
+					header: true
+				  });
+		var playerNameP = document.getElementById("playerName").value
+		console.log(playerNameP);
+	
+		for (i=0;i<pResult.data.length;i++){
+			if (pResult.data[i].Name === playerNameP){
+				proj = pResult.data[i];
+			};
+		};
+	
+	console.log(proj)
+	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
 				
     }});
 	
