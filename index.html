@@ -46,6 +46,7 @@
 	</div>
 <script>
 var rosterCSV = "";
+var statsCSV = "";
 var hrctx;
 var pactx;
 var hctx;
@@ -67,56 +68,52 @@ var sbChart;
 var csChart;
 
 $("#search").click(function(){
+	var stats;
+	var proj;
+	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+	var firstDate = new Date(2015,04,3);
+	var today = new Date();
+
+	var dayOfSeason = Math.round(Math.abs((firstDate.getTime() - today.getTime())/(oneDay)));
 	
     $.ajax({url: "DCBatters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
-		parseData(rosterCSV);
+		proj = parseData(rosterCSV);
 				
     }});
-});
-
-function clearPage(){
-	hrChart.destroy();
-	paChart.destroy();
-	hChart.destroy();
-	dblChart.destroy();
-	tplChart.destroy();
-	soChart.destroy();
-	bbChart.destroy();
-	sbChart.destroy();
-	csChart.destroy();
-	document.getElementById("playerName").value = "";
-}
-
-function parseData(rosterCSV){
-	var pResult = Papa.parse(rosterCSV,{
-					header: true
-				  });
-	var playerName = document.getElementById("playerName").value
-	console.log(playerName);
 	
-		for (i=0;i<pResult.data.length;i++){
-			if (pResult.data[i].Name === playerName){
-				var player = pResult.data[i];
-			};
-		};
+	$.ajax({url: "SeasonStats.csv", success: function(result){
+        statsCSV = result;
+		console.log(statsCSV);
+		stats = parseData(statsCSV);
+				
+    }});
 	
-	console.log(player);
-	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
 	//HR
-	var hrArray = [];
-	var hrRate = player.HR/26;
-	var hrHolder = 0;
-	var day = [];
+	var hrArrayProj = [];
+	var hrArrayStats = [];
+	
+	var hrRateProj = proj.HR/26;
+	var hrRateStats = stats.HR/dayOfSeason;
+	
+	var hrHolderProj = 0;
+	var hrHolderStats = 0;
+	
+	var dayProj = [];
+	
 	for (j=0; j<181; j+=7){
-		hrHolder = hrHolder + hrRate;
-		hrArray.push(Math.floor(hrHolder));
+		hrHolderProj = hrHolderProj + hrRateProj;
+		hrArrayProj.push(Math.floor(hrHolderProj));
 		week = j / 7;
-		day.push("Week:"+ week.toString());
+		dayProj.push("Week:"+ week.toString());
+	};
+	for (jj=0; jj<dayOfSeason; j+=7){
+		hrHolderStats = hrHolderStats + hrRateStats;
+		hrArrayStats.push(Math.floor(hrHolderStats));
 	};
 	var hrData = {
-		labels: day,
+		labels: dayProj,
 		datasets: [{
 			label: "My First dataset",
             fillColor: "#dddddd",
@@ -125,8 +122,18 @@ function parseData(rosterCSV){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArray
-		}]
+            data: hrArrayProj
+		}],
+		[{
+			label: "My First dataset",
+            fillColor: "#dddddd",
+            strokeColor: "#bbbbbb",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: hrArrayStats
+		}],
 	};
 	var options = {
 		bezierCurve: false
@@ -349,6 +356,38 @@ function parseData(rosterCSV){
 
 	csctx = $("#csChart").get(0).getContext("2d");
 	csChart = new Chart(csctx).Line(csData, options);
+});
+
+function clearPage(){
+	hrChart.destroy();
+	paChart.destroy();
+	hChart.destroy();
+	dblChart.destroy();
+	tplChart.destroy();
+	soChart.destroy();
+	bbChart.destroy();
+	sbChart.destroy();
+	csChart.destroy();
+	document.getElementById("playerName").value = "";
+	document.getElementById("playerInfo").innerHTML = "";
+}
+
+function parseData(csv){
+	var pResult = Papa.parse(csv,{
+					header: true
+				  });
+	var playerName = document.getElementById("playerName").value
+	console.log(playerName);
+	
+		for (i=0;i<pResult.data.length;i++){
+			if (pResult.data[i].Name === playerName){
+				var player = pResult.data[i];
+			};
+		};
+	
+	console.log(player);
+	$("#playerInfo").text(player.Name + ", " + player.Team + ", PA:" + player.PA + ", H:" + player.H + ", 2B:" + player.DBL + ", 3B:" + player.TPL + ", HR:" + player.HR + ", SO:" + player.SO + ", BB:" + player.BB + ", SB:" + player.SB + ", CS:" + player.CS);
+	return player;
 }
 </script>
 </body>
