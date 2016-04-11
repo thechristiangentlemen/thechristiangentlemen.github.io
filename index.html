@@ -176,7 +176,7 @@ $("#search").click(function(){
 	var paArrayStats = [];
 	
 	var paRateProj = proj.AB/26;
-	var paRateStats = stats.AB/dayOfSeason;
+	var paRateStats = stats.AB/(dayOfSeason/7);
 	
 	var paHolderProj = 0;
 	var paHolderStats = 0;
@@ -186,7 +186,7 @@ $("#search").click(function(){
 	for (k=0; k<181; k+=7){
 		paHolderProj = paHolderProj + paRateProj;
 		paArrayProj.push(Math.floor(paHolderProj));
-		week = j / 7;
+		week = k / 7;
 		paDay.push("Week:"+ week.toString());
 	};
 	for (kk=0; kk<dayOfSeason; kk+=7){
