@@ -172,30 +172,53 @@ $("#search").click(function(){
 	hrctx = $("#hrChart").get(0).getContext("2d");
 	hrChart = new Chart(hrctx).Line(hrData, options);
 	//PA
-	var paArray = [];
-	var paRate = player.PA/26;
-	var paHolder = 0;
+	var paArrayProj = [];
+	var paArrayStats = [];
+	
+	var paRateProj = proj.HR/26;
+	var paRateStats = stats.HR/dayOfSeason;
+	
+	var paHolderProj = 0;
+	var paHolderStats = 0;
+	
 	var paDay = [];
+	
 	for (k=0; k<181; k+=7){
-		paHolder = paHolder + paRate;
-		paArray.push(Math.floor(paHolder));
-		week = k / 7;
+		paHolderProj = paHolderProj + paRateProj;
+		paArrayProj.push(Math.floor(paHolderProj));
+		week = j / 7;
 		paDay.push("Week:"+ week.toString());
 	};
+	for (kk=0; kk<dayOfSeason; kk+=7){
+		paHolderStats = paHolderStats + paRateStats;
+		paArrayStats.push(Math.floor(paHolderStats));
+	};
 	var paData = {
-		labels: day,
+		labels: paDay,
 		datasets: [{
-			label: "My First dataset",
+			label: "proj dataset",
             fillColor: "#dddddd",
             strokeColor: "#bbbbbb",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: paArray
+            data: paArrayProj
+		},
+		{
+			label: "stats dataset",
+            fillColor: "#dddddd",
+            strokeColor: "#022840",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: paArrayStats
 		}]
 	};
-	
+	var options = {
+		bezierCurve: false
+	};
 	pactx = $("#paChart").get(0).getContext("2d");
 	paChart = new Chart(pactx).Line(paData, options);
 	//H
