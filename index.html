@@ -77,11 +77,11 @@ $("#search").click(function(){
 	var dayOfSeason = Math.round(Math.abs((firstDate.getTime() - today.getTime())/(oneDay)));
 	
     stats = function(){
-	
+	var projData = null;
 	$.ajax({url: "DCBatters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
-		var projData = null;
+		
 		
 		pResult = Papa.parse(rosterCSV,{
 					header: true
