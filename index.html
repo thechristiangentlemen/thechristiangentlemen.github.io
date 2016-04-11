@@ -78,7 +78,7 @@ $("#search").click(function(){
 	
     proj = function(){
 	var projData;
-	$.ajax({url: "DCBatters.csv", success: function(result){
+	$.ajax({async: false, url: "DCBatters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
 		
@@ -99,7 +99,7 @@ $("#search").click(function(){
 	}();
 	stats = function(){
 	var statsData;
-	$.ajax({url: "SeasonStats.csv", success: function(result){
+	$.ajax({async: false, url: "SeasonStats.csv", success: function(result){
         statsCSV = result;
 		console.log(statsCSV);
 		
