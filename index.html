@@ -76,8 +76,8 @@ $("#search").click(function(){
 
 	var dayOfSeason = Math.round(Math.abs((firstDate.getTime() - today.getTime())/(oneDay)));
 	
-    stats = function(){
-	var projData = null;
+    proj = function(){
+	var projData;
 	$.ajax({url: "DCBatters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
@@ -97,7 +97,8 @@ $("#search").click(function(){
     }});
 	return projData;
 	}();
-	
+	stats = function(){
+	var statsData;
 	$.ajax({url: "SeasonStats.csv", success: function(result){
         statsCSV = result;
 		console.log(statsCSV);
@@ -110,11 +111,13 @@ $("#search").click(function(){
 	
 		for (i=0;i<pResult.data.length;i++){
 			if (pResult.data[i].Name === playerNameS){
-				stats = pResult.data[i];
+				statsData = pResult.data[i];
 			};
 		};
 
     }});
+	return statsData;
+	}();
 	console.log(proj);
 	console.log(stats);
 	//HR
