@@ -93,12 +93,9 @@ $("#search").click(function(){
 			if (pResult.data[i].Name === playerNameP){
 				projData = pResult.data[i];
 			};
-		};
-	
-	
-	$("#playerInfo").text(proj.Name + ", " + proj.Team + ", PA:" + proj.PA + ", H:" + proj.H + ", 2B:" + proj.DBL + ", 3B:" + proj.TPL + ", HR:" + proj.HR + ", SO:" + proj.SO + ", BB:" + proj.BB + ", SB:" + proj.SB + ", CS:" + proj.CS);
-	return projData;		
+		};		
     }});
+	return projData;
 	}();
 	
 	$.ajax({url: "SeasonStats.csv", success: function(result){
