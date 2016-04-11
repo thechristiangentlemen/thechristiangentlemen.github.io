@@ -74,7 +74,7 @@ $("#search").click(function(){
 	var firstDate = new Date(2016,04,3);
 	var today = new Date();
 
-	var dayOfSeason = Math.round(Math.abs((today.getTime() - firstDate.getTime())/(oneDay)));
+	var dayOfSeason = Math.round(Math.abs((firstDate.getTime() - today.getTime())/(oneDay)));
 	
     proj = function(){
 	var projData;
