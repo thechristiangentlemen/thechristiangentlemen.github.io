@@ -76,9 +76,12 @@ $("#search").click(function(){
 
 	var dayOfSeason = Math.round(Math.abs((firstDate.getTime() - today.getTime())/(oneDay)));
 	
-    $.ajax({url: "DCBatters.csv", success: function(result){
+    stats = function(){
+	
+	$.ajax({url: "DCBatters.csv", success: function(result){
         rosterCSV = result;
 		console.log(rosterCSV);
+		var projData = null;
 		
 		pResult = Papa.parse(rosterCSV,{
 					header: true
@@ -88,19 +91,19 @@ $("#search").click(function(){
 	
 		for (i=0;i<pResult.data.length;i++){
 			if (pResult.data[i].Name === playerNameP){
-				proj = pResult.data[i];
+				projData = pResult.data[i];
 			};
 		};
 	
 	
 	$("#playerInfo").text(proj.Name + ", " + proj.Team + ", PA:" + proj.PA + ", H:" + proj.H + ", 2B:" + proj.DBL + ", 3B:" + proj.TPL + ", HR:" + proj.HR + ", SO:" + proj.SO + ", BB:" + proj.BB + ", SB:" + proj.SB + ", CS:" + proj.CS);
-				
+	return projData;		
     }});
+	}();
 	
 	$.ajax({url: "SeasonStats.csv", success: function(result){
         statsCSV = result;
 		console.log(statsCSV);
-		stats = parseData(statsCSV);
 		
 		pResult = Papa.parse(statsCSV,{
 					header: true
@@ -142,7 +145,7 @@ $("#search").click(function(){
 	var hrData = {
 		labels: dayProj,
 		datasets: [{
-			label: "My First dataset",
+			label: "proj dataset",
             fillColor: "#dddddd",
             strokeColor: "#bbbbbb",
             pointColor: "rgba(220,220,220,1)",
@@ -152,7 +155,7 @@ $("#search").click(function(){
             data: hrArrayProj
 		},
 		{
-			label: "My First dataset",
+			label: "stats dataset",
             fillColor: "#dddddd",
             strokeColor: "#022840",
             pointColor: "rgba(220,220,220,1)",
