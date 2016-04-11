@@ -16,7 +16,7 @@
 		<input type="button" id="search" value="Search"></input><input type="button" id="clear" value="Clear" onclick="clearPage()"></input>
 		<p id="playerInfo"></p>
 		
-		<p>PA</p>
+		<p>AB</p>
 		<canvas id="paChart" width="1200" height="400"></canvas>
 		
 		<p>H</p>
@@ -30,9 +30,6 @@
 		
 		<p>HR</p>
 		<canvas id="hrChart" width="1200" height="400"></canvas>
-		
-		<p>SO</p>
-		<canvas id="soChart" width="1200" height="400"></canvas>
 		
 		<p>BB</p>
 		<canvas id="bbChart" width="1200" height="400"></canvas>
@@ -121,7 +118,8 @@ $("#search").click(function(){
 	console.log(proj);
 	console.log(stats);
 	console.log(dayOfSeason);
-	//HR
+	
+	//*********HR***********
 	var hrArrayProj = [];
 	var hrArrayStats = [];
 	
@@ -171,7 +169,8 @@ $("#search").click(function(){
 	};
 	hrctx = $("#hrChart").get(0).getContext("2d");
 	hrChart = new Chart(hrctx).Line(hrData, options);
-	//PA
+	
+	//AB
 	var paArrayProj = [];
 	var paArrayStats = [];
 	
@@ -221,6 +220,7 @@ $("#search").click(function(){
 	};
 	pactx = $("#paChart").get(0).getContext("2d");
 	paChart = new Chart(pactx).Line(paData, options);
+	
 	//H
 	var hArrayProj = [];
 	var hArrayStats = [];
@@ -271,6 +271,7 @@ $("#search").click(function(){
 	};
 	hctx = $("#hChart").get(0).getContext("2d");
 	hChart = new Chart(hctx).Line(hData, options);
+	
 	//DBL
 	var dblArrayProj = [];
 	var dblArrayStats = [];
@@ -321,12 +322,13 @@ $("#search").click(function(){
 	};
 	dblctx = $("#dblChart").get(0).getContext("2d");
 	dblChart = new Chart(dblctx).Line(dblData, options);
+	
 	//TPL
 	var tplArrayProj = [];
 	var tplArrayStats = [];
 	
-	var tplRateProj = proj.DBL/26;
-	var tplRateStats = stats.DBL/(dayOfSeason/7);
+	var tplRateProj = proj.TPL/26;
+	var tplRateStats = stats.TPL/(dayOfSeason/7);
 	
 	var tplHolderProj = 0;
 	var tplHolderStats = 0;
@@ -371,80 +373,31 @@ $("#search").click(function(){
 	};
 	tplctx = $("#tplChart").get(0).getContext("2d");
 	tplChart = new Chart(tplctx).Line(tplData, options);
-	//SO
-	var hArrayProj = [];
-	var hrArrayStats = [];
 	
-	var hrRateProj = proj.HR/26;
-	var hrRateStats = stats.HR/(dayOfSeason/7);
-	
-	var hrHolderProj = 0;
-	var hrHolderStats = 0;
-	
-	var dayProj = [];
-	
-	for (j=0; j<181; j+=7){
-		hrHolderProj = hrHolderProj + hrRateProj;
-		hrArrayProj.push(Math.floor(hrHolderProj));
-		week = j / 7;
-		dayProj.push("Week:"+ week.toString());
-	};
-	for (jj=0; jj<181; jj+=7){
-		hrHolderStats = hrHolderStats + hrRateStats;
-		hrArrayStats.push(Math.floor(hrHolderStats));
-	};
-	var hrData = {
-		labels: dayProj,
-		datasets: [{
-			label: "proj dataset",
-            fillColor: "#dddddd",
-            strokeColor: "#bbbbbb",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayProj
-		},
-		{
-			label: "stats dataset",
-			fillColor: "rgba(151,187,205,0)",
-            strokeColor: "#022840",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayStats
-		}]
-	};
-	var options = {
-		bezierCurve: false
-	};
-	hrctx = $("#hrChart").get(0).getContext("2d");
-	hrChart = new Chart(hrctx).Line(hrData, options);
 	//BB
-	var hrArrayProj = [];
-	var hrArrayStats = [];
+	var bbArrayProj = [];
+	var bbArrayStats = [];
 	
-	var hrRateProj = proj.HR/26;
-	var hrRateStats = stats.HR/(dayOfSeason/7);
+	var bbRateProj = proj.BB/26;
+	var bbRateStats = stats.BB/(dayOfSeason/7);
 	
-	var hrHolderProj = 0;
-	var hrHolderStats = 0;
+	var bbHolderProj = 0;
+	var bbHolderStats = 0;
 	
-	var dayProj = [];
+	var bbDay = [];
 	
-	for (j=0; j<181; j+=7){
-		hrHolderProj = hrHolderProj + hrRateProj;
-		hrArrayProj.push(Math.floor(hrHolderProj));
-		week = j / 7;
-		dayProj.push("Week:"+ week.toString());
+	for (p=0; p<181; p+=7){
+		bbHolderProj = bbHolderProj + bbRateProj;
+		bbArrayProj.push(Math.floor(bbHolderProj));
+		week = p / 7;
+		bbDay.push("Week:"+ week.toString());
 	};
-	for (jj=0; jj<181; jj+=7){
-		hrHolderStats = hrHolderStats + hrRateStats;
-		hrArrayStats.push(Math.floor(hrHolderStats));
+	for (pp=0; pp<181; pp+=7){
+		bbHolderStats = bbHolderStats + bbRateStats;
+		bbArrayStats.push(Math.floor(hrHolderStats));
 	};
-	var hrData = {
-		labels: dayProj,
+	var bbData = {
+		labels: bbDay,
 		datasets: [{
 			label: "proj dataset",
             fillColor: "#dddddd",
@@ -453,7 +406,7 @@ $("#search").click(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayProj
+            data: bbArrayProj
 		},
 		{
 			label: "stats dataset",
@@ -463,38 +416,38 @@ $("#search").click(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayStats
+            data: bbArrayStats
 		}]
 	};
 	var options = {
 		bezierCurve: false
 	};
-	hrctx = $("#hrChart").get(0).getContext("2d");
-	hrChart = new Chart(hrctx).Line(hrData, options);
+	bbctx = $("#bbChart").get(0).getContext("2d");
+	bbChart = new Chart(bbctx).Line(bbData, options);
 	//SB
-	var hrArrayProj = [];
-	var hrArrayStats = [];
+	var sbArrayProj = [];
+	var sbArrayStats = [];
 	
-	var hrRateProj = proj.HR/26;
-	var hrRateStats = stats.HR/(dayOfSeason/7);
+	var sbRateProj = proj.SB/26;
+	var sbRateStats = stats.SB/(dayOfSeason/7);
 	
-	var hrHolderProj = 0;
-	var hrHolderStats = 0;
+	var sbHolderProj = 0;
+	var sbHolderStats = 0;
 	
-	var dayProj = [];
+	var sbDay = [];
 	
-	for (j=0; j<181; j+=7){
-		hrHolderProj = hrHolderProj + hrRateProj;
-		hrArrayProj.push(Math.floor(hrHolderProj));
-		week = j / 7;
-		dayProj.push("Week:"+ week.toString());
+	for (q=0; q<181; q+=7){
+		sbHolderProj = sbHolderProj + sbRateProj;
+		sbArrayProj.push(Math.floor(sbHolderProj));
+		week = q / 7;
+		sbDay.push("Week:"+ week.toString());
 	};
-	for (jj=0; jj<181; jj+=7){
-		hrHolderStats = hrHolderStats + hrRateStats;
-		hrArrayStats.push(Math.floor(hrHolderStats));
+	for (qq=0; qq<181; qq+=7){
+		sbHolderStats = sbHolderStats + sbRateStats;
+		sbArrayStats.push(Math.floor(sbHolderStats));
 	};
-	var hrData = {
-		labels: dayProj,
+	var sbData = {
+		labels: sbDay,
 		datasets: [{
 			label: "proj dataset",
             fillColor: "#dddddd",
@@ -503,7 +456,7 @@ $("#search").click(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayProj
+            data: sbArrayProj
 		},
 		{
 			label: "stats dataset",
@@ -513,38 +466,38 @@ $("#search").click(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayStats
+            data: sbArrayStats
 		}]
 	};
 	var options = {
 		bezierCurve: false
 	};
-	hrctx = $("#hrChart").get(0).getContext("2d");
-	hrChart = new Chart(hrctx).Line(hrData, options);
+	sbctx = $("#sbChart").get(0).getContext("2d");
+	sbChart = new Chart(sbctx).Line(sbData, options);
 	//CS
-	var hrArrayProj = [];
-	var hrArrayStats = [];
+	var csArrayProj = [];
+	var csArrayStats = [];
 	
-	var hrRateProj = proj.HR/26;
-	var hrRateStats = stats.HR/(dayOfSeason/7);
+	var csRateProj = proj.HR/26;
+	var csRateStats = stats.HR/(dayOfSeason/7);
 	
-	var hrHolderProj = 0;
-	var hrHolderStats = 0;
+	var csHolderProj = 0;
+	var csHolderStats = 0;
 	
-	var dayProj = [];
+	var csDay = [];
 	
-	for (j=0; j<181; j+=7){
-		hrHolderProj = hrHolderProj + hrRateProj;
-		hrArrayProj.push(Math.floor(hrHolderProj));
-		week = j / 7;
-		dayProj.push("Week:"+ week.toString());
+	for (r=0; r<181; r+=7){
+		csHolderProj = csHolderProj + csRateProj;
+		csArrayProj.push(Math.floor(csHolderProj));
+		week = r / 7;
+		csDay.push("Week:"+ week.toString());
 	};
-	for (jj=0; jj<181; jj+=7){
-		hrHolderStats = hrHolderStats + hrRateStats;
-		hrArrayStats.push(Math.floor(hrHolderStats));
+	for (rr=0; rr<181; rr+=7){
+		csHolderStats = csHolderStats + csRateStats;
+		csArrayStats.push(Math.floor(csHolderStats));
 	};
-	var hrData = {
-		labels: dayProj,
+	var csData = {
+		labels: csDay,
 		datasets: [{
 			label: "proj dataset",
             fillColor: "#dddddd",
@@ -553,7 +506,7 @@ $("#search").click(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayProj
+            data: csArrayProj
 		},
 		{
 			label: "stats dataset",
@@ -563,14 +516,14 @@ $("#search").click(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: hrArrayStats
+            data: csArrayStats
 		}]
 	};
 	var options = {
 		bezierCurve: false
 	};
-	hrctx = $("#hrChart").get(0).getContext("2d");
-	hrChart = new Chart(hrctx).Line(hrData, options);
+	csctx = $("#csChart").get(0).getContext("2d");
+	csChart = new Chart(csctx).Line(csData, options);
 });
 
 function clearPage(){
